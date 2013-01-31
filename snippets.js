@@ -1,9 +1,5 @@
 /*** Array ***/
 
-Array.prototype.random = function() {
-    return this[Math.floor((Math.random()*this.length))];
-};
-
 Array.prototype.each = function(fun) {
     for(var i=0;i<this.length;i++) {
         fun(this[i]);
