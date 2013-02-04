@@ -1,5 +1,5 @@
 var fs = require('fs'),
-    mongoose = require('mongoose'),
+    mongo = require('mongodb').MongoClient,
     _ = require('underscore')._,
     jsbot = require('./jsbot/jsbot');
 require('./snippets');
@@ -24,7 +24,9 @@ var DBot = function() {
     }
 
     /*** Initialise the Redis database ***/
-    this.mDB = mongoose.connect('mongodb://localhost/dbot');
+    mongo.connect('mongodb://localhost/dbot', function(err, db) {
+        this.mDB = db;
+    }.bind(this));
 
     /*** Load the Config ***/
 
